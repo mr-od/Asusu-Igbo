@@ -24,9 +24,7 @@ FOR NO KEY UPDATE;
 -- name: ListProducts :many
 SELECT * FROM products
 WHERE owner = $1
-ORDER BY id
-LIMIT $2
-OFFSET $3;
+ORDER BY id;
 
 -- name: UpdateProduct :one
 UPDATE products
