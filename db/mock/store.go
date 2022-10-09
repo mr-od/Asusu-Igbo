@@ -468,7 +468,7 @@ func (mr *MockStoreMockRecorder) ListOrders(arg0, arg1 interface{}) *gomock.Call
 }
 
 // ListProducts mocks base method.
-func (m *MockStore) ListProducts(arg0 context.Context, arg1 db.ListProductsParams) ([]db.Product, error) {
+func (m *MockStore) ListProducts(arg0 context.Context, arg1 string) ([]db.Product, error) {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "ListProducts", arg0, arg1)
 	ret0, _ := ret[0].([]db.Product)

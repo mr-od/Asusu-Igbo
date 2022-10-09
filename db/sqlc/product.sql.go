@@ -114,18 +114,10 @@ const listProducts = `-- name: ListProducts :many
 SELECT id, name, owner, price, description, imgs_url, imgs, created_at FROM products
 WHERE owner = $1
 ORDER BY id
-LIMIT $2
-OFFSET $3
 `
 
-type ListProductsParams struct {
-	Owner  string `json:"owner"`
-	Limit  int32  `json:"limit"`
-	Offset int32  `json:"offset"`
-}
-
-func (q *Queries) ListProducts(ctx context.Context, arg ListProductsParams) ([]Product, error) {
-	rows, err := q.db.QueryContext(ctx, listProducts, arg.Owner, arg.Limit, arg.Offset)
+func (q *Queries) ListProducts(ctx context.Context, owner string) ([]Product, error) {
+	rows, err := q.db.QueryContext(ctx, listProducts, owner)
 	if err != nil {
 		return nil, err
 	}
