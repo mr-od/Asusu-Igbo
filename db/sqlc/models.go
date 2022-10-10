@@ -8,6 +8,7 @@ import (
 	"time"
 
 	"github.com/google/uuid"
+	"github.com/shopspring/decimal"
 )
 
 type Account struct {
@@ -47,14 +48,14 @@ type OrderItem struct {
 }
 
 type Product struct {
-	ID          int64     `json:"id"`
-	Name        string    `json:"name"`
-	Owner       string    `json:"owner"`
-	Price       int64     `json:"price"`
-	Description string    `json:"description"`
-	ImgsUrl     []string  `json:"imgs_url"`
-	Imgs        []string  `json:"imgs"`
-	CreatedAt   time.Time `json:"created_at"`
+	ID          int64           `json:"id"`
+	Name        string          `json:"name"`
+	Owner       string          `json:"owner"`
+	Price       decimal.Decimal `json:"price"`
+	Description string          `json:"description"`
+	ImgsUrl     []string        `json:"imgs_url"`
+	ImgsName    []string        `json:"imgs_name"`
+	CreatedAt   time.Time       `json:"created_at"`
 }
 
 type Session struct {

@@ -468,18 +468,18 @@ func (mr *MockStoreMockRecorder) ListOrders(arg0, arg1 interface{}) *gomock.Call
 }
 
 // ListProducts mocks base method.
-func (m *MockStore) ListProducts(arg0 context.Context, arg1 string) ([]db.Product, error) {
+func (m *MockStore) ListProducts(arg0 context.Context) ([]db.Product, error) {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "ListProducts", arg0, arg1)
+	ret := m.ctrl.Call(m, "ListProducts", arg0)
 	ret0, _ := ret[0].([]db.Product)
 	ret1, _ := ret[1].(error)
 	return ret0, ret1
 }
 
 // ListProducts indicates an expected call of ListProducts.
-func (mr *MockStoreMockRecorder) ListProducts(arg0, arg1 interface{}) *gomock.Call {
+func (mr *MockStoreMockRecorder) ListProducts(arg0 interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListProducts", reflect.TypeOf((*MockStore)(nil).ListProducts), arg0, arg1)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListProducts", reflect.TypeOf((*MockStore)(nil).ListProducts), arg0)
 }
 
 // ListTransfers mocks base method.

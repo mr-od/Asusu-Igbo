@@ -5,6 +5,8 @@ import (
 	"math/rand"
 	"strings"
 	"time"
+
+	"github.com/shopspring/decimal"
 )
 
 const alphabet = "abcdefghijklmnopqrstuvwxyz"
@@ -15,6 +17,16 @@ func init() {
 
 func RandomInt(min, max int64) int64 {
 	return min + rand.Int63n(max-min+1)
+}
+
+func RandomDecimal(min, max string) decimal.Decimal {
+	dec, err := decimal.NewFromString(max + min)
+	if err != nil {
+		panic(err)
+	}
+	nint := decimal.NewFromInt(3)
+
+	return dec.Mul(nint)
 }
 
 func RandomString(n int) string {
@@ -34,6 +46,10 @@ func RandomOwner() string {
 
 func RandomMoney() int64 {
 	return RandomInt(0, 1000000)
+}
+
+func RandomPrice() decimal.Decimal {
+	return RandomDecimal("400", "10")
 }
 
 func RandomCurrency() string {

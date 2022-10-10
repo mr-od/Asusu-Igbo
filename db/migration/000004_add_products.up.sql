@@ -2,10 +2,10 @@ CREATE TABLE "products" (
   "id" bigserial PRIMARY KEY,
   "name" varchar NOT NULL,
   "owner" varchar NOT NULL,
-  "price" bigint NOT NULL,
+  "price" numeric NOT NULL,
   "description" varchar NOT NULL,
   "imgs_url" text[],
-  "imgs" text[],
+  "imgs_name" text[],
   "created_at" timestamptz NOT NULL DEFAULT 'now()'
 );
 

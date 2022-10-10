@@ -57,6 +57,7 @@ func (server *Server) setupRouter() {
 	authRoutes.POST("api/v1/products", server.addProduct)
 	authRoutes.GET("api/v1/products/:id", server.getProduct)
 	authRoutes.GET("api/v1/products", server.listProducts)
+	authRoutes.DELETE("api/v1/products/:id", server.deleteProduct)
 
 	// Order Route
 	authRoutes.POST("api/v1/orders/place", server.placeOrder)

@@ -9,29 +9,30 @@ import (
 	"context"
 
 	"github.com/lib/pq"
+	"github.com/shopspring/decimal"
 )
 
 const createProduct = `-- name: CreateProduct :one
-INSERT INTO products (
-  owner,
-  name,
-  price,
-  description,
-  imgs_url,
-  imgs
-) VALUES (
-  $1, $2, $3, $4, $5, $6
-)
-RETURNING id, name, owner, price, description, imgs_url, imgs, created_at
+
+INSERT INTO
+    products (
+        owner,
+        name,
+        price,
+        description,
+        imgs_url,
+        imgs_name
+    )
+VALUES ($1, $2, $3, $4, $5, $6) RETURNING id, name, owner, price, description, imgs_url, imgs_name, created_at
 `
 
 type CreateProductParams struct {
-	Owner       string   `json:"owner"`
-	Name        string   `json:"name"`
-	Price       int64    `json:"price"`
-	Description string   `json:"description"`
-	ImgsUrl     []string `json:"imgs_url"`
-	Imgs        []string `json:"imgs"`
+	Owner       string          `json:"owner"`
+	Name        string          `json:"name"`
+	Price       decimal.Decimal `json:"price"`
+	Description string          `json:"description"`
+	ImgsUrl     []string        `json:"imgs_url"`
+	ImgsName    []string        `json:"imgs_name"`
 }
 
 func (q *Queries) CreateProduct(ctx context.Context, arg CreateProductParams) (Product, error) {
@@ -41,7 +42,7 @@ func (q *Queries) CreateProduct(ctx context.Context, arg CreateProductParams) (P
 		arg.Price,
 		arg.Description,
 		pq.Array(arg.ImgsUrl),
-		pq.Array(arg.Imgs),
+		pq.Array(arg.ImgsName),
 	)
 	var i Product
 	err := row.Scan(
@@ -51,15 +52,15 @@ func (q *Queries) CreateProduct(ctx context.Context, arg CreateProductParams) (P
 		&i.Price,
 		&i.Description,
 		pq.Array(&i.ImgsUrl),
-		pq.Array(&i.Imgs),
+		pq.Array(&i.ImgsName),
 		&i.CreatedAt,
 	)
 	return i, err
 }
 
 const deleteProduct = `-- name: DeleteProduct :exec
-DELETE FROM products
-WHERE id = $1
+
+DELETE FROM products WHERE id = $1
 `
 
 func (q *Queries) DeleteProduct(ctx context.Context, id int64) error {
@@ -68,8 +69,8 @@ func (q *Queries) DeleteProduct(ctx context.Context, id int64) error {
 }
 
 const getProduct = `-- name: GetProduct :one
-SELECT id, name, owner, price, description, imgs_url, imgs, created_at FROM products
-WHERE id = $1 LIMIT 1
+
+SELECT id, name, owner, price, description, imgs_url, imgs_name, created_at FROM products WHERE id = $1 LIMIT 1
 `
 
 func (q *Queries) GetProduct(ctx context.Context, id int64) (Product, error) {
@@ -82,16 +83,15 @@ func (q *Queries) GetProduct(ctx context.Context, id int64) (Product, error) {
 		&i.Price,
 		&i.Description,
 		pq.Array(&i.ImgsUrl),
-		pq.Array(&i.Imgs),
+		pq.Array(&i.ImgsName),
 		&i.CreatedAt,
 	)
 	return i, err
 }
 
 const getProductForUpdate = `-- name: GetProductForUpdate :one
-SELECT id, name, owner, price, description, imgs_url, imgs, created_at FROM products
-WHERE id = $1 LIMIT 1
-FOR NO KEY UPDATE
+
+SELECT id, name, owner, price, description, imgs_url, imgs_name, created_at FROM products WHERE id = $1 LIMIT 1 FOR NO KEY UPDATE
 `
 
 func (q *Queries) GetProductForUpdate(ctx context.Context, id int64) (Product, error) {
@@ -104,20 +104,20 @@ func (q *Queries) GetProductForUpdate(ctx context.Context, id int64) (Product, e
 		&i.Price,
 		&i.Description,
 		pq.Array(&i.ImgsUrl),
-		pq.Array(&i.Imgs),
+		pq.Array(&i.ImgsName),
 		&i.CreatedAt,
 	)
 	return i, err
 }
 
 const listProducts = `-- name: ListProducts :many
-SELECT id, name, owner, price, description, imgs_url, imgs, created_at FROM products
-WHERE owner = $1
+
+SELECT id, name, owner, price, description, imgs_url, imgs_name, created_at FROM products
 ORDER BY id
 `
 
-func (q *Queries) ListProducts(ctx context.Context, owner string) ([]Product, error) {
-	rows, err := q.db.QueryContext(ctx, listProducts, owner)
+func (q *Queries) ListProducts(ctx context.Context) ([]Product, error) {
+	rows, err := q.db.QueryContext(ctx, listProducts)
 	if err != nil {
 		return nil, err
 	}
@@ -132,7 +132,7 @@ func (q *Queries) ListProducts(ctx context.Context, owner string) ([]Product, er
 			&i.Price,
 			&i.Description,
 			pq.Array(&i.ImgsUrl),
-			pq.Array(&i.Imgs),
+			pq.Array(&i.ImgsName),
 			&i.CreatedAt,
 		); err != nil {
 			return nil, err
@@ -149,15 +149,13 @@ func (q *Queries) ListProducts(ctx context.Context, owner string) ([]Product, er
 }
 
 const updateProduct = `-- name: UpdateProduct :one
-UPDATE products
-SET price = $2
-WHERE id = $1
-RETURNING id, name, owner, price, description, imgs_url, imgs, created_at
+
+UPDATE products SET price = $2 WHERE id = $1 RETURNING id, name, owner, price, description, imgs_url, imgs_name, created_at
 `
 
 type UpdateProductParams struct {
-	ID    int64 `json:"id"`
-	Price int64 `json:"price"`
+	ID    int64           `json:"id"`
+	Price decimal.Decimal `json:"price"`
 }
 
 func (q *Queries) UpdateProduct(ctx context.Context, arg UpdateProductParams) (Product, error) {
@@ -170,7 +168,7 @@ func (q *Queries) UpdateProduct(ctx context.Context, arg UpdateProductParams) (P
 		&i.Price,
 		&i.Description,
 		pq.Array(&i.ImgsUrl),
-		pq.Array(&i.Imgs),
+		pq.Array(&i.ImgsName),
 		&i.CreatedAt,
 	)
 	return i, err

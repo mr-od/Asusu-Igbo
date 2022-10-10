@@ -104,7 +104,7 @@ func randomProduct(owner string) db.Product {
 		ID:          util.RandomInt(1, 1000),
 		Owner:       owner,
 		Name:        util.RandomString(64),
-		Price:       util.RandomMoney(),
+		Price:       util.RandomPrice(),
 		Description: util.RandomCurrency(),
 	}
 }
