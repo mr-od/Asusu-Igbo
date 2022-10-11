@@ -1,0 +1,216 @@
+2022-10-11T17:00:22.711Z
+SyntaxError: You have a syntax error at "db.dbml" line 82 column 10. Expected " ", "(", "[", "`", "}", comment, valid name, or whitespace but "," found.
+    at /usr/local/lib/node_modules/@dbml/cli/lib/cli/utils.js:55:13
+    at Array.forEach (<anonymous>)
+    at generate (/usr/local/lib/node_modules/@dbml/cli/lib/cli/utils.js:48:14)
+    at exportHandler (/usr/local/lib/node_modules/@dbml/cli/lib/cli/export.js:41:27)
+    at Object.dbml2sql (/usr/local/lib/node_modules/@dbml/cli/lib/cli/index.js:27:23)
+    at Object.<anonymous> (/usr/local/lib/node_modules/@dbml/cli/bin/dbml2sql.js:4:19)
+    at Module._compile (internal/modules/cjs/loader.js:999:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1027:10)
+    at Module.load (internal/modules/cjs/loader.js:863:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:708:14)
+
+ROOT_ERROR:
+SyntaxError: Expected " ", "(", "[", "`", "}", comment, valid name, or whitespace but "," found.
+    at peg$buildStructuredError (/usr/local/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/dbmlParser.js:1163:12)
+    at Object.peg$parse [as parse] (/usr/local/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/dbmlParser.js:8164:11)
+    at Function.parseDBMLToJSON (/usr/local/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/Parser.js:54:37)
+    at Function.parse (/usr/local/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/Parser.js:81:32)
+    at Object._export [as export] (/usr/local/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/export/index.js:15:37)
+    at /usr/local/lib/node_modules/@dbml/cli/lib/cli/export.js:41:69
+    at /usr/local/lib/node_modules/@dbml/cli/lib/cli/utils.js:52:23
+    at Array.forEach (<anonymous>)
+    at generate (/usr/local/lib/node_modules/@dbml/cli/lib/cli/utils.js:48:14)
+    at exportHandler (/usr/local/lib/node_modules/@dbml/cli/lib/cli/export.js:41:27)
+{"start":{"offset":1846,"line":82,"column":10},"end":{"offset":1847,"line":82,"column":11}}
+
+2022-10-11T17:00:40.074Z
+SyntaxError: You have a syntax error at "db.dbml" line 83 column 5. Column "tsv" do not exist in table "orders"
+    at /usr/local/lib/node_modules/@dbml/cli/lib/cli/utils.js:55:13
+    at Array.forEach (<anonymous>)
+    at generate (/usr/local/lib/node_modules/@dbml/cli/lib/cli/utils.js:48:14)
+    at exportHandler (/usr/local/lib/node_modules/@dbml/cli/lib/cli/export.js:41:27)
+    at Object.dbml2sql (/usr/local/lib/node_modules/@dbml/cli/lib/cli/index.js:27:23)
+    at Object.<anonymous> (/usr/local/lib/node_modules/@dbml/cli/bin/dbml2sql.js:4:19)
+    at Module._compile (internal/modules/cjs/loader.js:999:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1027:10)
+    at Module.load (internal/modules/cjs/loader.js:863:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:708:14)
+
+ROOT_ERROR:
+Error: Column "tsv" do not exist in table "orders"
+    at Index.error (/usr/local/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/model_structure/element.js:77:13)
+    at /usr/local/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/model_structure/table.js:149:17
+    at Array.forEach (<anonymous>)
+    at Table.checkIndex (/usr/local/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/model_structure/table.js:147:21)
+    at Table.pushIndex (/usr/local/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/model_structure/table.js:139:12)
+    at /usr/local/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/model_structure/table.js:131:16
+    at Array.forEach (<anonymous>)
+    at Table.processIndexes (/usr/local/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/model_structure/table.js:130:18)
+    at new Table (/usr/local/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/model_structure/table.js:85:11)
+    at /usr/local/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/model_structure/database.js:155:30
+{"start":{"offset":1851,"line":83,"column":5},"end":{"offset":1854,"line":83,"column":8}}
+
+2022-10-11T17:01:30.350Z
+SyntaxError: You have a syntax error at "db.dbml" line 84 column 5. Column "tsv" do not exist in table "orders"
+    at /usr/local/lib/node_modules/@dbml/cli/lib/cli/utils.js:55:13
+    at Array.forEach (<anonymous>)
+    at generate (/usr/local/lib/node_modules/@dbml/cli/lib/cli/utils.js:48:14)
+    at exportHandler (/usr/local/lib/node_modules/@dbml/cli/lib/cli/export.js:41:27)
+    at Object.dbml2sql (/usr/local/lib/node_modules/@dbml/cli/lib/cli/index.js:27:23)
+    at Object.<anonymous> (/usr/local/lib/node_modules/@dbml/cli/bin/dbml2sql.js:4:19)
+    at Module._compile (internal/modules/cjs/loader.js:999:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1027:10)
+    at Module.load (internal/modules/cjs/loader.js:863:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:708:14)
+
+ROOT_ERROR:
+Error: Column "tsv" do not exist in table "orders"
+    at Index.error (/usr/local/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/model_structure/element.js:77:13)
+    at /usr/local/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/model_structure/table.js:149:17
+    at Array.forEach (<anonymous>)
+    at Table.checkIndex (/usr/local/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/model_structure/table.js:147:21)
+    at Table.pushIndex (/usr/local/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/model_structure/table.js:139:12)
+    at /usr/local/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/model_structure/table.js:131:16
+    at Array.forEach (<anonymous>)
+    at Table.processIndexes (/usr/local/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/model_structure/table.js:130:18)
+    at new Table (/usr/local/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/model_structure/table.js:85:11)
+    at /usr/local/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/model_structure/database.js:155:30
+{"start":{"offset":1859,"line":84,"column":5},"end":{"offset":1862,"line":84,"column":8}}
+
+2022-10-11T17:08:47.262Z
+SyntaxError: You have a syntax error at "db.dbml" line 69 column 12. Expected " ", "name:", "note:", "type:", "unique", PK, comment, or whitespace but "t" found.
+    at /usr/local/lib/node_modules/@dbml/cli/lib/cli/utils.js:55:13
+    at Array.forEach (<anonymous>)
+    at generate (/usr/local/lib/node_modules/@dbml/cli/lib/cli/utils.js:48:14)
+    at exportHandler (/usr/local/lib/node_modules/@dbml/cli/lib/cli/export.js:41:27)
+    at Object.dbml2sql (/usr/local/lib/node_modules/@dbml/cli/lib/cli/index.js:27:23)
+    at Object.<anonymous> (/usr/local/lib/node_modules/@dbml/cli/bin/dbml2sql.js:4:19)
+    at Module._compile (internal/modules/cjs/loader.js:999:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1027:10)
+    at Module.load (internal/modules/cjs/loader.js:863:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:708:14)
+
+ROOT_ERROR:
+SyntaxError: Expected " ", "name:", "note:", "type:", "unique", PK, comment, or whitespace but "t" found.
+    at peg$buildStructuredError (/usr/local/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/dbmlParser.js:1163:12)
+    at Object.peg$parse [as parse] (/usr/local/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/dbmlParser.js:8164:11)
+    at Function.parseDBMLToJSON (/usr/local/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/Parser.js:54:37)
+    at Function.parse (/usr/local/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/Parser.js:81:32)
+    at Object._export [as export] (/usr/local/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/export/index.js:15:37)
+    at /usr/local/lib/node_modules/@dbml/cli/lib/cli/export.js:41:69
+    at /usr/local/lib/node_modules/@dbml/cli/lib/cli/utils.js:52:23
+    at Array.forEach (<anonymous>)
+    at generate (/usr/local/lib/node_modules/@dbml/cli/lib/cli/utils.js:48:14)
+    at exportHandler (/usr/local/lib/node_modules/@dbml/cli/lib/cli/export.js:41:27)
+{"start":{"offset":1570,"line":69,"column":12},"end":{"offset":1571,"line":69,"column":13}}
+
+2022-10-11T17:09:12.691Z
+SyntaxError: You have a syntax error at "db.dbml" line 69 column 17. Expected btree, comment, hash, or whitespace but "]" found.
+    at /usr/local/lib/node_modules/@dbml/cli/lib/cli/utils.js:55:13
+    at Array.forEach (<anonymous>)
+    at generate (/usr/local/lib/node_modules/@dbml/cli/lib/cli/utils.js:48:14)
+    at exportHandler (/usr/local/lib/node_modules/@dbml/cli/lib/cli/export.js:41:27)
+    at Object.dbml2sql (/usr/local/lib/node_modules/@dbml/cli/lib/cli/index.js:27:23)
+    at Object.<anonymous> (/usr/local/lib/node_modules/@dbml/cli/bin/dbml2sql.js:4:19)
+    at Module._compile (internal/modules/cjs/loader.js:999:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1027:10)
+    at Module.load (internal/modules/cjs/loader.js:863:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:708:14)
+
+ROOT_ERROR:
+SyntaxError: Expected btree, comment, hash, or whitespace but "]" found.
+    at peg$buildStructuredError (/usr/local/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/dbmlParser.js:1163:12)
+    at Object.peg$parse [as parse] (/usr/local/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/dbmlParser.js:8164:11)
+    at Function.parseDBMLToJSON (/usr/local/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/Parser.js:54:37)
+    at Function.parse (/usr/local/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/Parser.js:81:32)
+    at Object._export [as export] (/usr/local/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/export/index.js:15:37)
+    at /usr/local/lib/node_modules/@dbml/cli/lib/cli/export.js:41:69
+    at /usr/local/lib/node_modules/@dbml/cli/lib/cli/utils.js:52:23
+    at Array.forEach (<anonymous>)
+    at generate (/usr/local/lib/node_modules/@dbml/cli/lib/cli/utils.js:48:14)
+    at exportHandler (/usr/local/lib/node_modules/@dbml/cli/lib/cli/export.js:41:27)
+{"start":{"offset":1575,"line":69,"column":17},"end":{"offset":1576,"line":69,"column":18}}
+
+2022-10-11T17:11:26.119Z
+SyntaxError: You have a syntax error at "db.dbml" line 69 column 17. Expected btree, comment, hash, or whitespace but "g" found.
+    at /usr/local/lib/node_modules/@dbml/cli/lib/cli/utils.js:55:13
+    at Array.forEach (<anonymous>)
+    at generate (/usr/local/lib/node_modules/@dbml/cli/lib/cli/utils.js:48:14)
+    at exportHandler (/usr/local/lib/node_modules/@dbml/cli/lib/cli/export.js:41:27)
+    at Object.dbml2sql (/usr/local/lib/node_modules/@dbml/cli/lib/cli/index.js:27:23)
+    at Object.<anonymous> (/usr/local/lib/node_modules/@dbml/cli/bin/dbml2sql.js:4:19)
+    at Module._compile (internal/modules/cjs/loader.js:999:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1027:10)
+    at Module.load (internal/modules/cjs/loader.js:863:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:708:14)
+
+ROOT_ERROR:
+SyntaxError: Expected btree, comment, hash, or whitespace but "g" found.
+    at peg$buildStructuredError (/usr/local/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/dbmlParser.js:1163:12)
+    at Object.peg$parse [as parse] (/usr/local/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/dbmlParser.js:8164:11)
+    at Function.parseDBMLToJSON (/usr/local/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/Parser.js:54:37)
+    at Function.parse (/usr/local/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/Parser.js:81:32)
+    at Object._export [as export] (/usr/local/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/export/index.js:15:37)
+    at /usr/local/lib/node_modules/@dbml/cli/lib/cli/export.js:41:69
+    at /usr/local/lib/node_modules/@dbml/cli/lib/cli/utils.js:52:23
+    at Array.forEach (<anonymous>)
+    at generate (/usr/local/lib/node_modules/@dbml/cli/lib/cli/utils.js:48:14)
+    at exportHandler (/usr/local/lib/node_modules/@dbml/cli/lib/cli/export.js:41:27)
+{"start":{"offset":1575,"line":69,"column":17},"end":{"offset":1576,"line":69,"column":18}}
+
+2022-10-11T17:11:41.438Z
+SyntaxError: You have a syntax error at "db.dbml" line 69 column 17. Expected btree, comment, hash, or whitespace but "G" found.
+    at /usr/local/lib/node_modules/@dbml/cli/lib/cli/utils.js:55:13
+    at Array.forEach (<anonymous>)
+    at generate (/usr/local/lib/node_modules/@dbml/cli/lib/cli/utils.js:48:14)
+    at exportHandler (/usr/local/lib/node_modules/@dbml/cli/lib/cli/export.js:41:27)
+    at Object.dbml2sql (/usr/local/lib/node_modules/@dbml/cli/lib/cli/index.js:27:23)
+    at Object.<anonymous> (/usr/local/lib/node_modules/@dbml/cli/bin/dbml2sql.js:4:19)
+    at Module._compile (internal/modules/cjs/loader.js:999:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1027:10)
+    at Module.load (internal/modules/cjs/loader.js:863:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:708:14)
+
+ROOT_ERROR:
+SyntaxError: Expected btree, comment, hash, or whitespace but "G" found.
+    at peg$buildStructuredError (/usr/local/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/dbmlParser.js:1163:12)
+    at Object.peg$parse [as parse] (/usr/local/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/dbmlParser.js:8164:11)
+    at Function.parseDBMLToJSON (/usr/local/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/Parser.js:54:37)
+    at Function.parse (/usr/local/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/Parser.js:81:32)
+    at Object._export [as export] (/usr/local/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/export/index.js:15:37)
+    at /usr/local/lib/node_modules/@dbml/cli/lib/cli/export.js:41:69
+    at /usr/local/lib/node_modules/@dbml/cli/lib/cli/utils.js:52:23
+    at Array.forEach (<anonymous>)
+    at generate (/usr/local/lib/node_modules/@dbml/cli/lib/cli/utils.js:48:14)
+    at exportHandler (/usr/local/lib/node_modules/@dbml/cli/lib/cli/export.js:41:27)
+{"start":{"offset":1575,"line":69,"column":17},"end":{"offset":1576,"line":69,"column":18}}
+
+2022-10-11T17:12:47.317Z
+SyntaxError: You have a syntax error at "db.dbml" line 69 column 24. Expected "(", "`", "}", comment, valid name, or whitespace but "[" found.
+    at /usr/local/lib/node_modules/@dbml/cli/lib/cli/utils.js:55:13
+    at Array.forEach (<anonymous>)
+    at generate (/usr/local/lib/node_modules/@dbml/cli/lib/cli/utils.js:48:14)
+    at exportHandler (/usr/local/lib/node_modules/@dbml/cli/lib/cli/export.js:41:27)
+    at Object.dbml2sql (/usr/local/lib/node_modules/@dbml/cli/lib/cli/index.js:27:23)
+    at Object.<anonymous> (/usr/local/lib/node_modules/@dbml/cli/bin/dbml2sql.js:4:19)
+    at Module._compile (internal/modules/cjs/loader.js:999:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1027:10)
+    at Module.load (internal/modules/cjs/loader.js:863:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:708:14)
+
+ROOT_ERROR:
+SyntaxError: Expected "(", "`", "}", comment, valid name, or whitespace but "[" found.
+    at peg$buildStructuredError (/usr/local/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/dbmlParser.js:1163:12)
+    at Object.peg$parse [as parse] (/usr/local/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/dbmlParser.js:8164:11)
+    at Function.parseDBMLToJSON (/usr/local/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/Parser.js:54:37)
+    at Function.parse (/usr/local/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/Parser.js:81:32)
+    at Object._export [as export] (/usr/local/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/export/index.js:15:37)
+    at /usr/local/lib/node_modules/@dbml/cli/lib/cli/export.js:41:69
+    at /usr/local/lib/node_modules/@dbml/cli/lib/cli/utils.js:52:23
+    at Array.forEach (<anonymous>)
+    at generate (/usr/local/lib/node_modules/@dbml/cli/lib/cli/utils.js:48:14)
+    at exportHandler (/usr/local/lib/node_modules/@dbml/cli/lib/cli/export.js:41:27)
+{"start":{"offset":1582,"line":69,"column":24},"end":{"offset":1583,"line":69,"column":25}}
+

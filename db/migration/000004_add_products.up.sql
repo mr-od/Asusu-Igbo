@@ -15,11 +15,9 @@ ALTER TABLE "products" ADD FOREIGN KEY ("owner") REFERENCES "users" ("username")
 
 CREATE INDEX ON "products" ("owner");
 
-ALTER TABLE "products" ADD COLUMN "tsv" tsvector;
 
-UPDATE "products" SET "tsv" =
-    setweight(to_tsvector(name), 'A') ||
-    setweight(to_tsvector(description), 'B');
+ALTER TABLE "products"
+    ADD COLUMN "tsv" tsvector
+               GENERATED ALWAYS AS (to_tsvector('english', coalesce(name, '') || ' ' || coalesce(description, ''))) STORED;
 
-
-CREATE INDEX ix_products_tsv ON "products" USING GIN(tsv);
+CREATE INDEX "search_product_index" ON "products" USING GIN ("tsv");

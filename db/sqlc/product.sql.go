@@ -23,7 +23,7 @@ INSERT INTO
         imgs_url,
         imgs_name
     )
-VALUES ($1, $2, $3, $4, $5, $6) RETURNING id, name, owner, price, description, imgs_url, imgs_name, created_at, tsv
+VALUES ($1, $2, $3, $4, $5, $6) RETURNING id, name, owner, price, description, imgs_url, imgs_name, tsv, created_at
 `
 
 type CreateProductParams struct {
@@ -53,8 +53,8 @@ func (q *Queries) CreateProduct(ctx context.Context, arg CreateProductParams) (P
 		&i.Description,
 		pq.Array(&i.ImgsUrl),
 		pq.Array(&i.ImgsName),
-		&i.CreatedAt,
 		&i.Tsv,
+		&i.CreatedAt,
 	)
 	return i, err
 }
@@ -71,7 +71,7 @@ func (q *Queries) DeleteProduct(ctx context.Context, id int64) error {
 
 const getProduct = `-- name: GetProduct :one
 
-SELECT id, name, owner, price, description, imgs_url, imgs_name, created_at, tsv FROM products WHERE id = $1 LIMIT 1
+SELECT id, name, owner, price, description, imgs_url, imgs_name, tsv, created_at FROM products WHERE id = $1 LIMIT 1
 `
 
 func (q *Queries) GetProduct(ctx context.Context, id int64) (Product, error) {
@@ -85,15 +85,15 @@ func (q *Queries) GetProduct(ctx context.Context, id int64) (Product, error) {
 		&i.Description,
 		pq.Array(&i.ImgsUrl),
 		pq.Array(&i.ImgsName),
-		&i.CreatedAt,
 		&i.Tsv,
+		&i.CreatedAt,
 	)
 	return i, err
 }
 
 const getProductForUpdate = `-- name: GetProductForUpdate :one
 
-SELECT id, name, owner, price, description, imgs_url, imgs_name, created_at, tsv FROM products WHERE id = $1 LIMIT 1 FOR NO KEY UPDATE
+SELECT id, name, owner, price, description, imgs_url, imgs_name, tsv, created_at FROM products WHERE id = $1 LIMIT 1 FOR NO KEY UPDATE
 `
 
 func (q *Queries) GetProductForUpdate(ctx context.Context, id int64) (Product, error) {
@@ -107,15 +107,15 @@ func (q *Queries) GetProductForUpdate(ctx context.Context, id int64) (Product, e
 		&i.Description,
 		pq.Array(&i.ImgsUrl),
 		pq.Array(&i.ImgsName),
-		&i.CreatedAt,
 		&i.Tsv,
+		&i.CreatedAt,
 	)
 	return i, err
 }
 
 const listProducts = `-- name: ListProducts :many
 
-SELECT id, name, owner, price, description, imgs_url, imgs_name, created_at, tsv FROM products
+SELECT id, name, owner, price, description, imgs_url, imgs_name, tsv, created_at FROM products
 ORDER BY id
 `
 
@@ -136,8 +136,8 @@ func (q *Queries) ListProducts(ctx context.Context) ([]Product, error) {
 			&i.Description,
 			pq.Array(&i.ImgsUrl),
 			pq.Array(&i.ImgsName),
-			&i.CreatedAt,
 			&i.Tsv,
+			&i.CreatedAt,
 		); err != nil {
 			return nil, err
 		}
@@ -154,7 +154,7 @@ func (q *Queries) ListProducts(ctx context.Context) ([]Product, error) {
 
 const updateProduct = `-- name: UpdateProduct :one
 
-UPDATE products SET price = $2 WHERE id = $1 RETURNING id, name, owner, price, description, imgs_url, imgs_name, created_at, tsv
+UPDATE products SET price = $2 WHERE id = $1 RETURNING id, name, owner, price, description, imgs_url, imgs_name, tsv, created_at
 `
 
 type UpdateProductParams struct {
@@ -173,8 +173,8 @@ func (q *Queries) UpdateProduct(ctx context.Context, arg UpdateProductParams) (P
 		&i.Description,
 		pq.Array(&i.ImgsUrl),
 		pq.Array(&i.ImgsName),
-		&i.CreatedAt,
 		&i.Tsv,
+		&i.CreatedAt,
 	)
 	return i, err
 }

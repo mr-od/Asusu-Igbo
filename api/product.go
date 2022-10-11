@@ -18,6 +18,10 @@ import (
 	"github.com/shopspring/decimal"
 )
 
+type idProductRequest struct {
+	ID int64 `uri:"id" binding:"required,min=1"`
+}
+
 type createProductRequest struct {
 	Name        string                  `form:"name"`
 	Price       decimal.Decimal         `form:"price"`
@@ -105,12 +109,8 @@ func (server *Server) addProduct(ctx *gin.Context) {
 	ctx.JSON(http.StatusOK, product)
 }
 
-type getProductRequest struct {
-	ID int64 `uri:"id" binding:"required,min=1"`
-}
-
 func (server *Server) getProduct(ctx *gin.Context) {
-	var req getProductRequest
+	var req idProductRequest
 	if err := ctx.ShouldBindUri(&req); err != nil {
 		ctx.JSON(http.StatusBadRequest, errorResponse(err))
 		return
@@ -163,12 +163,8 @@ func (server *Server) listProducts(ctx *gin.Context) {
 	ctx.JSON(http.StatusOK, products)
 }
 
-type delProductRequest struct {
-	ID int64 `uri:"id" binding:"required,min=1"`
-}
-
 func (server *Server) deleteProduct(ctx *gin.Context) {
-	var req getProductRequest
+	var req idProductRequest
 	if err := ctx.ShouldBindUri(&req); err != nil {
 		ctx.JSON(http.StatusBadRequest, errorResponse(err))
 		return

@@ -1,6 +1,6 @@
 -- SQL dump generated using DBML (dbml-lang.org)
 -- Database: PostgreSQL
--- Generated at: 2022-10-11T12:01:24.714Z
+-- Generated at: 2022-10-11T17:12:58.970Z
 
 CREATE TABLE "users" (
   "username" varchar PRIMARY KEY,
@@ -42,6 +42,7 @@ CREATE TABLE "products" (
   "description" varchar NOT NULL,
   "imgs_url" text[],
   "imgs_name" text[],
+  "tsv" tsvector,
   "created_at" timestamptz NOT NULL DEFAULT 'now()'
 );
 
@@ -78,6 +79,8 @@ CREATE INDEX ON "transfers" ("to_account_id");
 CREATE INDEX ON "transfers" ("from_account_id", "to_account_id");
 
 CREATE INDEX ON "products" ("owner");
+
+CREATE INDEX "search_product_index" ON "products" USING GIN ("tsv");
 
 CREATE INDEX ON "orders" ("owner");
 

@@ -61,10 +61,12 @@ Table products as P {
   description varchar [not null]
   imgs_url text[]
   imgs_name text[]
+  tsv tsvector [null]
   created_at timestamptz [not null, default: 'now()']
   
   Indexes {
     owner
+    (tsv) [type:btree, name: 'search_product_index']
   }
 }
 
