@@ -56,6 +56,7 @@ type Product struct {
 	ImgsUrl     []string        `json:"imgs_url"`
 	ImgsName    []string        `json:"imgs_name"`
 	CreatedAt   time.Time       `json:"created_at"`
+	Tsv         interface{}     `json:"tsv"`
 }
 
 type Session struct {

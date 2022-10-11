@@ -65,6 +65,8 @@ func (server *Server) setupRouter() {
 	// Transfers Route
 	authRoutes.POST("api/v1/transfers", server.createTransfer)
 
+	authRoutes.GET("api/v1/search/:q", server.searchProduct)
+
 	server.router = router
 
 }

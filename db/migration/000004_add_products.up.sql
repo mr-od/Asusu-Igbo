@@ -9,6 +9,17 @@ CREATE TABLE "products" (
   "created_at" timestamptz NOT NULL DEFAULT 'now()'
 );
 
+
+
 ALTER TABLE "products" ADD FOREIGN KEY ("owner") REFERENCES "users" ("username");
 
 CREATE INDEX ON "products" ("owner");
+
+ALTER TABLE "products" ADD COLUMN "tsv" tsvector;
+
+UPDATE "products" SET "tsv" =
+    setweight(to_tsvector(name), 'A') ||
+    setweight(to_tsvector(description), 'B');
+
+
+CREATE INDEX ix_products_tsv ON "products" USING GIN(tsv);
