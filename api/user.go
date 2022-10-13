@@ -2,6 +2,7 @@ package api
 
 import (
 	"database/sql"
+	"errors"
 	"net/http"
 	"time"
 
@@ -9,6 +10,7 @@ import (
 	"github.com/google/uuid"
 	"github.com/lib/pq"
 	db "github.com/mr-od/Asusu-Igbo/db/sqlc"
+	"github.com/mr-od/Asusu-Igbo/token"
 	"github.com/mr-od/Asusu-Igbo/util"
 )
 
@@ -153,4 +155,39 @@ func (server *Server) loginUser(ctx *gin.Context) {
 	}
 	ctx.JSON(http.StatusOK, rsp)
 
+}
+
+// type getUserReq struct {
+// 	Username string `uri:"user" binding:"required"`
+// }
+
+func (server *Server) getUser(ctx *gin.Context) {
+	// var req getUserReq
+	// if err := ctx.ShouldBindUri(&req); err != nil {
+	// 	ctx.JSON(http.StatusBadRequest, errorResponse(err))
+	// 	return
+	// }
+
+	authPayload := ctx.MustGet(authorizationPayloadKey).(*token.Payload)
+
+	user, err := server.store.GetUser(ctx, authPayload.Username)
+	if err != nil {
+		if err == sql.ErrNoRows {
+			ctx.JSON(http.StatusNotFound, errorResponse(err))
+			return
+		}
+
+		ctx.JSON(http.StatusInternalServerError, errorResponse(err))
+		return
+	}
+
+	if user.Username != authPayload.Username {
+		err := errors.New("username does not belong to the logged in user")
+		ctx.JSON(http.StatusUnauthorized, errorResponse(err))
+		return
+	}
+
+	rsp := newUserResponse(user)
+
+	ctx.JSON(http.StatusOK, rsp)
 }
