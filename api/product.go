@@ -62,7 +62,7 @@ func (server *Server) addProduct(ctx *gin.Context) {
 			ctx.JSON(http.StatusInternalServerError, errorResponse(err))
 			return
 		}
-		imgs := "http://" + "product-images/" + util.RandomProduct() + image.Filename
+		imgs := "product-images/" + util.RandomProduct() + image.Filename
 		imgs_name = append(imgs_name, imgs)
 
 		imgsUrl := "http://" + cf.OSSBucket + "." + cf.OSSEndpoint + "/" + imgs
