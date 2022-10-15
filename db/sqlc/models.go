@@ -28,13 +28,13 @@ type Entry struct {
 }
 
 type Order struct {
-	ID          int64     `json:"id"`
-	Owner       string    `json:"owner"`
-	Status      string    `json:"status"`
-	DeliveryFee int64     `json:"delivery_fee"`
-	Subtotal    int64     `json:"subtotal"`
-	Total       int64     `json:"total"`
-	CreatedAt   time.Time `json:"created_at"`
+	ID          int64           `json:"id"`
+	Owner       string          `json:"owner"`
+	Status      string          `json:"status"`
+	DeliveryFee decimal.Decimal `json:"delivery_fee"`
+	Subtotal    decimal.Decimal `json:"subtotal"`
+	Total       decimal.Decimal `json:"total"`
+	CreatedAt   time.Time       `json:"created_at"`
 }
 
 type OrderItem struct {
@@ -55,8 +55,8 @@ type Product struct {
 	Description string          `json:"description"`
 	ImgsUrl     []string        `json:"imgs_url"`
 	ImgsName    []string        `json:"imgs_name"`
-	Tsv         interface{}     `json:"tsv"`
 	CreatedAt   time.Time       `json:"created_at"`
+	Tsv         interface{}     `json:"tsv"`
 }
 
 type Session struct {

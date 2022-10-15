@@ -1,6 +1,6 @@
 -- SQL dump generated using DBML (dbml-lang.org)
 -- Database: PostgreSQL
--- Generated at: 2022-10-12T06:49:41.031Z
+-- Generated at: 2022-10-15T10:35:14.629Z
 
 CREATE TABLE "users" (
   "username" varchar PRIMARY KEY,
@@ -42,7 +42,6 @@ CREATE TABLE "products" (
   "description" varchar NOT NULL,
   "imgs_url" text[],
   "imgs_name" text[],
-  "sold" bigint DEFAULT 0,
   "tsv" tsvector,
   "created_at" timestamptz NOT NULL DEFAULT 'now()'
 );
@@ -51,9 +50,9 @@ CREATE TABLE "orders" (
   "id" bigserial PRIMARY KEY,
   "owner" varchar NOT NULL,
   "status" varchar NOT NULL,
-  "delivery_fee" bigint NOT NULL,
-  "subtotal" bigint NOT NULL,
-  "total" bigint NOT NULL,
+  "delivery_fee" numeric NOT NULL,
+  "subtotal" numeric NOT NULL,
+  "total" numeric NOT NULL,
   "created_at" timestamptz NOT NULL DEFAULT 'now()'
 );
 

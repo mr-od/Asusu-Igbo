@@ -7,6 +7,7 @@ import (
 	"github.com/lib/pq"
 	db "github.com/mr-od/Asusu-Igbo/db/sqlc"
 	"github.com/mr-od/Asusu-Igbo/token"
+	"github.com/shopspring/decimal"
 )
 
 // type orderRequest struct {
@@ -34,9 +35,9 @@ type placeOrderRequest struct {
 }
 
 type Order struct {
-	DeliveryFee int64 `json:"delivery_fee"`
-	Subtotal    int64 `json:"subtotal"`
-	Total       int64 `json:"total"`
+	DeliveryFee decimal.Decimal `json:"delivery_fee"`
+	Subtotal    decimal.Decimal `json:"subtotal"`
+	Total       decimal.Decimal `json:"total"`
 	// Status      string `json:"status"`
 }
 

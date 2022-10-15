@@ -74,9 +74,9 @@ Table orders as O {
   id bigserial [pk]
   owner varchar [ref: > U.username, not null]
   status varchar [not null]
-  delivery_fee bigint [not null]
-  subtotal bigint [not null]
-  total bigint [not null]
+  delivery_fee numeric [not null]
+  subtotal numeric [not null]
+  total numeric [not null]
   created_at timestamptz [not null, default: 'now()']
   
   Indexes {

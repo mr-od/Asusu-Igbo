@@ -12,7 +12,7 @@ import (
 )
 
 const searchProduct = `-- name: SearchProduct :many
-SELECT id, name, owner, price, description, imgs_url, imgs_name, tsv, created_at
+SELECT id, name, owner, price, description, imgs_url, imgs_name, created_at, tsv
 FROM products
 WHERE tsv @@ to_tsquery($1)
 ORDER BY created_at DESC
@@ -36,8 +36,8 @@ func (q *Queries) SearchProduct(ctx context.Context, searchQuery string) ([]Prod
 			&i.Description,
 			pq.Array(&i.ImgsUrl),
 			pq.Array(&i.ImgsName),
-			&i.Tsv,
 			&i.CreatedAt,
+			&i.Tsv,
 		); err != nil {
 			return nil, err
 		}

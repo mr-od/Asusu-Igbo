@@ -7,6 +7,8 @@ package db
 
 import (
 	"context"
+
+	"github.com/shopspring/decimal"
 )
 
 const createOrder = `-- name: CreateOrder :one
@@ -23,11 +25,11 @@ RETURNING id, owner, status, delivery_fee, subtotal, total, created_at
 `
 
 type CreateOrderParams struct {
-	Owner       string `json:"owner"`
-	Status      string `json:"status"`
-	DeliveryFee int64  `json:"delivery_fee"`
-	Subtotal    int64  `json:"subtotal"`
-	Total       int64  `json:"total"`
+	Owner       string          `json:"owner"`
+	Status      string          `json:"status"`
+	DeliveryFee decimal.Decimal `json:"delivery_fee"`
+	Subtotal    decimal.Decimal `json:"subtotal"`
+	Total       decimal.Decimal `json:"total"`
 }
 
 func (q *Queries) CreateOrder(ctx context.Context, arg CreateOrderParams) (Order, error) {
