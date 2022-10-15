@@ -30,7 +30,7 @@ import (
 
 type placeOrderRequest struct {
 	Orders   Order     `json:"order_details"`
-	Products []Product `json:"aos"`
+	Products []Product `json:"product_quantity"`
 }
 
 type Order struct {
