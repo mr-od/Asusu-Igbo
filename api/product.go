@@ -65,7 +65,7 @@ func (server *Server) addProduct(ctx *gin.Context) {
 		imgs := "http://" + "product-images/" + util.RandomProduct() + image.Filename
 		imgs_name = append(imgs_name, imgs)
 
-		imgsUrl := cf.OSSBucket + "." + cf.OSSEndpoint + "/" + imgs
+		imgsUrl := "http://" + cf.OSSBucket + "." + cf.OSSEndpoint + "/" + imgs
 		imgs_url = append(imgs_url, imgsUrl)
 
 		log.Println(imgs_name)
